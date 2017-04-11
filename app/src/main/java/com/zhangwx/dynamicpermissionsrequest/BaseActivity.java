@@ -33,6 +33,7 @@ public class BaseActivity extends AppCompatActivity implements EasyPermissions.P
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
+        //用户勾选了“不再询问”，以后每次都跳转到权限设置界面
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             new AppSettingsDialog.Builder(this).build().show();
         }
