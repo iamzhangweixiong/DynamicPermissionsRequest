@@ -1,0 +1,24 @@
+
+android 6.0 变更
+
+https://developer.android.google.cn/about/versions/marshmallow/android-6.0-changes.html?hl=zh-cn
+
+1、Android 6.0 版移除了对 Apache HTTP 客户端的支持
+换成 target 23 要使用 org.apache.http.legacy，否则会报错：Error:(19, 23) 错误: 程序包org.apache.http不存在
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+
+2、Android 6.0 版删掉了 Notification.setLatestEventInfo 方法，需要使用 NotificationCompat 对 Notification 进行兼容
+
+3、各权限对应代码：
+
+    a、android.permission.READ_SMS：查看短信
+        getSystemService(Context.TELEPHONY_SERVICE).getLine1Number();//这个方法比较奇怪，有 READ_SMS 或者 READ_PHONE_STATE 权限都可以
+
+    b、android.permission.READ_CALL_LOG：查询通话记录
+        cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, null, selection, selectionArgs, CallLog.Calls.DATE + " desc");
+
+    c、android.permission.READ_PHONE_STATE：查看手机状态
+        getSystemService(Context.TELEPHONY_SERVICE).getDeviceId();
+        getSystemService(Context.TELEPHONY_SERVICE).getLine1Number();
