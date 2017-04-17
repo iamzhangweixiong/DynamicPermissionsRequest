@@ -22,3 +22,10 @@ android {
     c、android.permission.READ_PHONE_STATE：查看手机状态
         getSystemService(Context.TELEPHONY_SERVICE).getDeviceId();
         getSystemService(Context.TELEPHONY_SERVICE).getLine1Number();
+
+    d、permission:android.permission.READ_EXTERNAL_STORAGE/permission:android.permission.WRITE_EXTERNAL_STORAGE
+        getExternalStorageDirectory
+
+    .......
+
+4、

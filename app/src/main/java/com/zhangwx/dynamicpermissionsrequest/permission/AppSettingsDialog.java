@@ -16,8 +16,7 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-
-import com.cleanmaster.security.commonlib.R;
+import com.zhangwx.dynamicpermissionsrequest.R;
 
 
 /**
