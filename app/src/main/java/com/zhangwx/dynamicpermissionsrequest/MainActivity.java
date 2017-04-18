@@ -1,6 +1,7 @@
 package com.zhangwx.dynamicpermissionsrequest;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.zhangwx.dynamicpermissionsrequest.permission.AfterPermissionGranted;
 import com.zhangwx.dynamicpermissionsrequest.permission.EasyPermissions;
@@ -11,15 +12,19 @@ import com.zhangwx.dynamicpermissionsrequest.permission.bridge.PermissionRequest
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.requestBtn).setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
         //方式一:
-        EasyPermissions.requestPermissions(this,
+        EasyPermissions.requestPermissions(getParent(),
                 R.mipmap.ic_launcher,
                 "RequestLocationPermissions",
                 getString(R.string.action_settings),
@@ -54,8 +59,8 @@ public class MainActivity extends BaseActivity {
 
     //方式三：重启一个Activity用于特殊情况下使用，使用空的Activity用于中转
     private void checkPermissionWithBridge() {
-        IPermissionRequest request = new PermissionRequestBridge(this);
-        request.request(
+        IPermissionRequest requestBridge = new PermissionRequestBridge(this);
+        requestBridge.request(
                 PermissionUtils.REQUEST_CAMERA_CODE,
                 PermissionUtils.PERMISSION_CAMERA_GROUP,
                 "RequestCameraPermissions",
