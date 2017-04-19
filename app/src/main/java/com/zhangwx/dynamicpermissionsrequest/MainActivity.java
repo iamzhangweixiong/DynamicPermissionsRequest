@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         //方式一:
-        EasyPermissions.requestPermissions(getParent(),
+        EasyPermissions.requestPermissions(this,
                 R.mipmap.ic_launcher,
                 "RequestLocationPermissions",
                 getString(R.string.action_settings),
@@ -35,14 +35,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        checkPermissionWithBridge();
     }
 
-    //方式一：满足一般情况
+    //方式一：
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         super.onPermissionsGranted(requestCode, perms);
         //do something
     }
 
-    //方式二：满足一般情况，通过注解反射回调
+    //方式二：通过注解反射回调
     @AfterPermissionGranted(PermissionUtils.REQUEST_LOCATION_CODE)
     private void checkPermission() {
         if (EasyPermissions.hasPermissions(getApplicationContext(), PermissionUtils.PERMISSION_LOCATION_GROUP)) {
