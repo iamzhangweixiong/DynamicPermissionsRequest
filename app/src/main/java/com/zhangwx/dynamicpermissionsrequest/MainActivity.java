@@ -18,7 +18,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.requestBtn).setOnClickListener(this);
+        findViewById(R.id.fab).setOnClickListener(this);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         //方式一:
         EasyPermissions.requestPermissions(this,
                 R.mipmap.ic_launcher,
-                "RequestLocationPermissions",
-                getString(R.string.action_settings),
+                "MainActivity",
+                getString(R.string.rationale_contact),
                 PermissionUtils.REQUEST_CONTACTS_CODE,
                 PermissionUtils.PERMISSIONS_CONTACTS_GROUP);
 
@@ -50,8 +50,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } else {
             EasyPermissions.requestPermissions(this,
                     R.mipmap.ic_launcher,
-                    "RequestLocationPermissions",
-                    getString(R.string.action_settings),
+                    "MainActivity",
+                    getString(R.string.rationale_location),
                     PermissionUtils.REQUEST_LOCATION_CODE,
                     PermissionUtils.PERMISSION_LOCATION_GROUP);
         }
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         requestBridge.request(
                 PermissionUtils.REQUEST_CAMERA_CODE,
                 PermissionUtils.PERMISSION_CAMERA_GROUP,
-                "RequestCameraPermissions",
+                getString(R.string.rationale_camera),
                 new PermissionRequestBridge.RequestCallBack() {
                     @Override
                     public void onRequestResult(boolean isGranted) {

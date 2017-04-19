@@ -3,4 +3,8 @@
     <string name="action_settings">Settings</string>
     <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
     <string name="title_settings_dialog">Permissions Required</string>
+    <string name="rationale_read_sms">我需要读取短信权限</string>
+    <string name="rationale_contact">我需要联系人管理权限</string>
+    <string name="rationale_location">我需要获取地理位置权限</string>
+    <string name="rationale_camera">我需要相机权限</string>
 </resources>
