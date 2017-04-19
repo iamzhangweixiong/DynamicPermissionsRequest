@@ -36,7 +36,7 @@ public class PermissionUtils {
             Manifest.permission.GET_ACCOUNTS};
 
     /** 电话权限 */
-    public static String[] PERMISSION_PHONE_GROUP = {
+    public static String[] PERMISSIONS_PHONE_GROUP = {
             Manifest.permission.READ_CALL_LOG,
             Manifest.permission.WRITE_CALL_LOG,
             Manifest.permission.PROCESS_OUTGOING_CALLS,
@@ -48,7 +48,7 @@ public class PermissionUtils {
             Manifest.permission.CAMERA};
 
     /** 位置权限 */
-    public static String[] PERMISSION_LOCATION_GROUP = {
+    public static String[] PERMISSIONS_LOCATION_GROUP = {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION};
 
@@ -63,8 +63,8 @@ public class PermissionUtils {
     // 有些地方用 EasyPermission 检查会标红
     /** 检查定位权限 */
     public static boolean checkLocationPermission(Context context) {
-        if (ActivityCompat.checkSelfPermission(context, PERMISSION_LOCATION_GROUP[0]) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(context, PERMISSION_LOCATION_GROUP[1]) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(context, PERMISSIONS_LOCATION_GROUP[0]) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(context, PERMISSIONS_LOCATION_GROUP[1]) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
         return false;

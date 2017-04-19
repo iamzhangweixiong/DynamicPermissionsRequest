@@ -28,4 +28,7 @@ android {
 
     .......
 
-4、shouldShowRequestPermissionRationale 当用户勾选了不再提示复选框的时候返回 false
+4、shouldShowRequestPermissionRationale(permission)
+    初始：return false
+    拒绝：return true
+    不再询问：return false

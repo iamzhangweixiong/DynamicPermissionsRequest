@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     //方式二：通过注解反射回调
     @AfterPermissionGranted(PermissionUtils.REQUEST_LOCATION_CODE)
     private void checkPermission() {
-        if (EasyPermissions.hasPermissions(getApplicationContext(), PermissionUtils.PERMISSION_LOCATION_GROUP)) {
+        if (EasyPermissions.hasPermissions(getApplicationContext(), PermissionUtils.PERMISSIONS_LOCATION_GROUP)) {
             //do something
         } else {
             EasyPermissions.requestPermissions(this,
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     "MainActivity",
                     getString(R.string.rationale_location),
                     PermissionUtils.REQUEST_LOCATION_CODE,
-                    PermissionUtils.PERMISSION_LOCATION_GROUP);
+                    PermissionUtils.PERMISSIONS_LOCATION_GROUP);
         }
     }
 
