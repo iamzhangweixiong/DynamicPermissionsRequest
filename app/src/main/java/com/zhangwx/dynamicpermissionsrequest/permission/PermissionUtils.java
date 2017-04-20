@@ -16,13 +16,13 @@ public class PermissionUtils {
 
     public static final int DEFAULT_CODE = Integer.MAX_VALUE;
 
-    public static final int REQUEST_STROAGE_CODE = 0;
     public static final int REQUEST_CONTACTS_CODE = 1;
     public static final int REQUEST_PHONE_CODE = 2;
     public static final int REQUEST_CAMERA_CODE = 3;
     public static final int REQUEST_LOCATION_CODE = 4;
     public static final int REQUEST_MICROPHONE_CODE = 5;
     public static final int REQUEST_SMS_CODE = 6;
+    public static final int REQUEST_STROAGE_CODE = 7;
 
     /** 存储读写权限 */
     public static String[] PERMISSIONS_STORAGE_GROUP = {
