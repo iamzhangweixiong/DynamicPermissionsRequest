@@ -6,7 +6,6 @@ import android.view.View;
 import com.zhangwx.dynamicpermissionsrequest.permission.AfterPermissionGranted;
 import com.zhangwx.dynamicpermissionsrequest.permission.EasyPermissions;
 import com.zhangwx.dynamicpermissionsrequest.permission.PermissionUtils;
-import com.zhangwx.dynamicpermissionsrequest.permission.bridge.IPermissionRequest;
 import com.zhangwx.dynamicpermissionsrequest.permission.bridge.PermissionRequestBridge;
 
 import java.util.List;
@@ -57,12 +56,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
-    //方式三：重启一个Activity用于特殊情况下使用，使用空的Activity用于中转
+    //方式三：(推荐)重启一个Activity用于特殊情况下使用，使用空的Activity用于中转
     private void checkPermissionWithBridge() {
-        IPermissionRequest requestBridge = new PermissionRequestBridge(this);
-        requestBridge.request(
+        PermissionRequestBridge.getInstance(this).request(
+                true,
                 PermissionUtils.REQUEST_CAMERA_CODE,
                 PermissionUtils.PERMISSION_CAMERA_GROUP,
+                getString(R.string.title_settings_dialog),
                 getString(R.string.rationale_camera),
                 new PermissionRequestBridge.RequestCallBack() {
                     @Override

@@ -75,7 +75,7 @@ class RationaleDialogConfig {
                 .setPositiveButton(positiveButton, listener)
                 .setNegativeButton(negativeButton, listener)
                 .setMessage(rationaleMsg);
-        if (icon != -1) {
+        if (icon != PermissionUtils.WITHOUT_ICON) {
             builder.setIcon(icon);
         }
         if (!TextUtils.isEmpty(title)) {

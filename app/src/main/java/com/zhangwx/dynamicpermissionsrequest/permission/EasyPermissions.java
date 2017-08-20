@@ -31,6 +31,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.zhangwx.dynamicpermissionsrequest.R;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -147,6 +149,18 @@ public class EasyPermissions {
         }
     }
 
+
+    @SuppressLint("NewApi")
+    public static void requestPermissionsWithOutRationale(@NonNull Activity activity,
+                                                          int requestCode,
+                                                          @NonNull String... perms) {
+        if (hasPermissions(activity, perms)) {
+            notifyAlreadyHasPermissions(activity, requestCode, perms);
+            return;
+        }
+        ActivityCompat.requestPermissions(activity, perms, requestCode);
+    }
+
     /**
      * Request a set of permissions, showing rationale if the system requests it.
      *
@@ -197,6 +211,18 @@ public class EasyPermissions {
         } else {
             fragment.requestPermissions(perms, requestCode);
         }
+    }
+
+    @SuppressLint("NewApi")
+    public static void requestPermissionsWithOutRationale(@NonNull Fragment fragment,
+                                                          int requestCode,
+                                                          @NonNull String... perms) {
+        if (hasPermissions(fragment.getContext(), perms)) {
+            notifyAlreadyHasPermissions(fragment, requestCode, perms);
+            return;
+        }
+
+        fragment.requestPermissions(perms, requestCode);
     }
 
     /**
@@ -257,6 +283,18 @@ public class EasyPermissions {
         } else {
             fragment.requestPermissions(perms, requestCode);
         }
+    }
+
+    @SuppressLint("NewApi")
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+    public static void requestPermissionsWithOutRationale(@NonNull android.app.Fragment fragment,
+                                                          int requestCode,
+                                                          @NonNull String... perms) {
+        if (hasPermissions(fragment.getActivity(), perms)) {
+            notifyAlreadyHasPermissions(fragment, requestCode, perms);
+            return;
+        }
+        fragment.requestPermissions(perms, requestCode);
     }
 
     /**

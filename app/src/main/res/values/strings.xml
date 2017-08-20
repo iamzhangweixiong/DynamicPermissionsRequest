@@ -7,4 +7,5 @@
     <string name="rationale_contact">我需要联系人管理权限</string>
     <string name="rationale_location">我需要获取地理位置权限</string>
     <string name="rationale_camera">我需要相机权限</string>
+    <string name="permission_positive">GOT IT</string>
 </resources>
