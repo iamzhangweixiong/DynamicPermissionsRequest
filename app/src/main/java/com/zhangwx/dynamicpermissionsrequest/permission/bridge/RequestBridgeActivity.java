@@ -91,6 +91,7 @@ public class RequestBridgeActivity extends FragmentActivity implements EasyPermi
 
     public static void startSelf(Context context, boolean needRationale, int type, String[] permissionGroup, String title, String rationale) {
         Intent intent = new Intent(context, RequestBridgeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(KEY_CHECK_TYPE_CODE, type);
         intent.putExtra(KEY_CHECK_GROUP, permissionGroup);
         intent.putExtra(KEY_CHECK_RATIONALE, rationale);

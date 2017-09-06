@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
+import com.zhangwx.dynamicpermissionsrequest.MyApplication;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -17,8 +19,6 @@ public class PermissionRequestBridge {
     public static final String KEY_CHECK_RESULT = "key_check_result";
     public static final String KEY_CHECK_PERMISSION_CODE = "key_permission_code";
 
-    private static PermissionRequestBridge sInstance;
-    private WeakReference<Context> mContext;
     private RequestCallBack mRequestCallBack;
 
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -32,31 +32,19 @@ public class PermissionRequestBridge {
         }
     };
 
-    public static PermissionRequestBridge getInstance(Context context) {
-        if (sInstance == null) {
-            synchronized (PermissionRequestBridge.class) {
-                if (sInstance == null) {
-                    sInstance = new PermissionRequestBridge(context);
-                }
-            }
-        }
-        return sInstance;
-    }
-
-    public PermissionRequestBridge(Context context) {
-        this.mContext = new WeakReference<>(context);
+    public PermissionRequestBridge() {
         registerBroadcast();
     }
 
     public void request(boolean needRationale, int requestCode, String[] permissionGroup, String title, String rationale, RequestCallBack callBack) {
         mRequestCallBack = callBack;
-        RequestBridgeActivity.startSelf(mContext.get(), needRationale, requestCode, permissionGroup, title, rationale);
+        RequestBridgeActivity.startSelf(MyApplication.getContext(), needRationale, requestCode, permissionGroup, title, rationale);
     }
 
     private void registerBroadcast() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(PERMISSION_CHECK_ACTION);
-        mContext.get().registerReceiver(mReceiver, filter);
+        MyApplication.getContext().registerReceiver(mReceiver, filter);
     }
 
 

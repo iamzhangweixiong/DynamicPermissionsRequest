@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     //方式三：(推荐)重启一个Activity用于特殊情况下使用，使用空的Activity用于中转
     private void checkPermissionWithBridge() {
-        PermissionRequestBridge.getInstance(this).request(
+        new PermissionRequestBridge().request(
                 true,
                 PermissionUtils.REQUEST_CAMERA_CODE,
                 PermissionUtils.PERMISSION_CAMERA_GROUP,
